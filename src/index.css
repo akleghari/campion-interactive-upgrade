@@ -15,49 +15,49 @@
     --popover: 222 47% 9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 174 83% 50%;
-    --primary-foreground: 222 47% 6%;
+    --primary: 280 35% 58%;
+    --primary-foreground: 280 20% 98%;
 
-    --secondary: 222 47% 14%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 260 30% 14%;
+    --secondary-foreground: 280 20% 98%;
 
-    --muted: 222 30% 18%;
-    --muted-foreground: 215 20% 60%;
+    --muted: 260 25% 18%;
+    --muted-foreground: 270 15% 65%;
 
-    --accent: 280 70% 60%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 320 40% 55%;
+    --accent-foreground: 320 20% 98%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 222 30% 18%;
-    --input: 222 30% 18%;
-    --ring: 174 83% 50%;
+    --border: 260 25% 20%;
+    --input: 260 25% 18%;
+    --ring: 280 35% 58%;
 
     --radius: 0.75rem;
 
-    /* Custom tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(174, 83%, 50%) 0%, hsl(200, 90%, 50%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(280, 70%, 60%) 0%, hsl(320, 80%, 55%) 100%);
-    --gradient-hero: linear-gradient(180deg, hsl(222, 47%, 6%) 0%, hsl(222, 47%, 10%) 100%);
-    --gradient-card: linear-gradient(135deg, hsl(222, 47%, 12%) 0%, hsl(222, 47%, 8%) 100%);
-    --gradient-glow: radial-gradient(ellipse at center, hsl(174, 83%, 50%, 0.15) 0%, transparent 70%);
+    /* Custom tokens - Purple palette matching logo */
+    --gradient-primary: linear-gradient(135deg, hsl(280, 35%, 58%) 0%, hsl(300, 40%, 65%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(320, 40%, 55%) 0%, hsl(340, 50%, 60%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(260, 40%, 6%) 0%, hsl(260, 35%, 10%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(260, 35%, 12%) 0%, hsl(260, 35%, 8%) 100%);
+    --gradient-glow: radial-gradient(ellipse at center, hsl(280, 35%, 58%, 0.15) 0%, transparent 70%);
     
-    --shadow-glow: 0 0 60px hsl(174, 83%, 50%, 0.2);
-    --shadow-card: 0 8px 32px hsl(222, 47%, 2%, 0.4);
-    --shadow-button: 0 4px 24px hsl(174, 83%, 50%, 0.3);
+    --shadow-glow: 0 0 60px hsl(280, 35%, 58%, 0.25);
+    --shadow-card: 0 8px 32px hsl(260, 40%, 2%, 0.4);
+    --shadow-button: 0 4px 24px hsl(280, 35%, 58%, 0.35);
 
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Inter', sans-serif;
 
-    --sidebar-background: 222 47% 8%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 174 83% 50%;
-    --sidebar-primary-foreground: 222 47% 6%;
-    --sidebar-accent: 222 47% 14%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 222 30% 18%;
-    --sidebar-ring: 174 83% 50%;
+    --sidebar-background: 260 35% 8%;
+    --sidebar-foreground: 280 20% 98%;
+    --sidebar-primary: 280 35% 58%;
+    --sidebar-primary-foreground: 280 20% 98%;
+    --sidebar-accent: 260 30% 14%;
+    --sidebar-accent-foreground: 280 20% 98%;
+    --sidebar-border: 260 25% 20%;
+    --sidebar-ring: 280 35% 58%;
   }
 }
 
@@ -180,10 +180,10 @@
 
   @keyframes pulse-glow {
     0%, 100% {
-      box-shadow: 0 0 20px hsl(174, 83%, 50%, 0.3);
+      box-shadow: 0 0 20px hsl(280, 35%, 58%, 0.3);
     }
     50% {
-      box-shadow: 0 0 40px hsl(174, 83%, 50%, 0.5);
+      box-shadow: 0 0 40px hsl(280, 35%, 58%, 0.5);
     }
   }
 

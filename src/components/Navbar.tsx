@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
+import campionLogo from '@/assets/campion-logo.png';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -32,12 +33,11 @@ const Navbar = () => {
       <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
         <a href="#home" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center text-primary-foreground font-heading font-bold text-xl group-hover:scale-110 transition-transform duration-300">
-            C
-          </div>
-          <span className="font-heading font-semibold text-xl text-foreground">
-            Campion<span className="text-primary">Media</span>
-          </span>
+          <img 
+            src={campionLogo} 
+            alt="Campion Media" 
+            className="h-10 w-auto group-hover:scale-105 transition-transform duration-300"
+          />
         </a>
 
         {/* Desktop Navigation */}

@@ -1,4 +1,5 @@
 import { ArrowUp } from 'lucide-react';
+import campionLogo from '@/assets/campion-logo.png';
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -11,12 +12,11 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center text-primary-foreground font-heading font-bold text-xl">
-              C
-            </div>
-            <span className="font-heading font-semibold text-xl text-foreground">
-              Campion<span className="text-primary">Media</span>
-            </span>
+            <img 
+              src={campionLogo} 
+              alt="Campion Media" 
+              className="h-10 w-auto"
+            />
           </div>
 
           {/* Links */}
