@@ -36,7 +36,7 @@ const Navbar = () => {
           <img 
             src={campionLogo} 
             alt="Campion Media" 
-            className="h-10 w-auto group-hover:scale-105 transition-transform duration-300"
+            className="h-14 w-auto group-hover:scale-105 transition-transform duration-300"
           />
         </a>
 
