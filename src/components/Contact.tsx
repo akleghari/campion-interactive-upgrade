@@ -5,6 +5,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { Mail, Phone, MapPin, Send, CheckCircle2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
+const WEB3FORMS_KEY = 'c5c71c24-e902-4995-8170-2091eabae24f';
+
 const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -40,29 +42,56 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `New Contact Form Submission from ${formData.name}`,
+          from_name: 'Campion Media Website',
+          name: formData.name,
+          email: formData.email,
+          company: formData.company || 'Not provided',
+          message: formData.message,
+        }),
+      });
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    toast({
-      title: 'Message Sent!',
-      description: "We'll get back to you within 24 hours.",
-    });
+      const result = await response.json();
 
-    // Reset form after delay
-    setTimeout(() => {
-      setFormData({ name: '', email: '', company: '', message: '' });
-      setIsSubmitted(false);
-    }, 3000);
+      if (result.success) {
+        setIsSubmitted(true);
+        toast({
+          title: 'Message Sent!',
+          description: "We'll get back to you within 24 hours.",
+        });
+        setTimeout(() => {
+          setFormData({ name: '', email: '', company: '', message: '' });
+          setIsSubmitted(false);
+        }, 3000);
+      } else {
+        throw new Error(result.message || 'Something went wrong');
+      }
+    } catch (error) {
+      toast({
+        title: 'Error',
+        description: 'Failed to send message. Please try again or email us directly.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
     {
       icon: <Mail className="w-5 h-5" />,
       label: 'Email',
-      value: 'cs@campionmedia.com',
-      href: 'mailto:cs@campionmedia.com',
+      value: 'info@campionmedia.com',
+      href: 'mailto:info@campionmedia.com',
     },
     {
       icon: <Phone className="w-5 h-5" />,
