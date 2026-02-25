@@ -5,6 +5,7 @@ import About from '@/components/About';
 import Services from '@/components/Services';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import CookieBanner from '@/components/CookieBanner';
 
 const Index = () => {
   return (
@@ -28,6 +29,7 @@ const Index = () => {
           <Contact />
         </main>
         <Footer />
+        <CookieBanner />
       </div>
     </>
   );
