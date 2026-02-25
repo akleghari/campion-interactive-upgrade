@@ -29,7 +29,7 @@ const CookieBanner = () => {
           <Cookie className="w-6 h-6 text-primary shrink-0 mt-0.5 sm:mt-0" />
           <p className="text-sm text-muted-foreground font-body flex-1">
             We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.{' '}
-            <a href="#" className="text-primary hover:underline">Learn more</a>
+            <a href="/privacy-policy" className="text-primary hover:underline">Learn more</a>
           </p>
           <div className="flex gap-3 shrink-0">
             <Button variant="outline" size="sm" onClick={decline}>

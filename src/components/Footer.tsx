@@ -51,7 +51,7 @@ const Footer = () => {
             © {new Date().getFullYear()} Campion Media. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors font-body">
+            <a href="/privacy-policy" className="text-sm text-muted-foreground hover:text-primary transition-colors font-body">
               Privacy Policy
             </a>
             <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors font-body">
