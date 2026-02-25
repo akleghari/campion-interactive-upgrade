@@ -52,7 +52,7 @@ const Navbar = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
             </a>
           ))}
-          <Button variant="hero" size="lg">
+          <Button variant="hero" size="lg" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
             Get in Touch
           </Button>
         </div>
@@ -83,7 +83,7 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
-          <Button variant="hero" size="lg" className="mt-2">
+          <Button variant="hero" size="lg" className="mt-2" onClick={() => { setIsMobileMenuOpen(false); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }}>
             Get in Touch
           </Button>
         </div>
