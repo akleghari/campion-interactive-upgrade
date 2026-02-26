@@ -50,18 +50,23 @@ const Footer = () => {
         </div>
 
         {/* Bottom */}
-        <div className="mt-12 pt-8 border-t border-border/30 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-muted-foreground font-body">
-            © {new Date().getFullYear()} Campion Media. All rights reserved.
-          </p>
-          <div className="flex items-center gap-6">
-            <a href="/privacy-policy" className="text-sm text-muted-foreground hover:text-primary transition-colors font-body">
-              Privacy Policy
-            </a>
-            <a href="/terms-of-service" className="text-sm text-muted-foreground hover:text-primary transition-colors font-body">
-              Terms of Service
-            </a>
+        <div className="mt-12 pt-8 border-t border-border/30 flex flex-col items-center gap-4">
+          <div className="flex flex-col md:flex-row items-center justify-between w-full gap-4">
+            <p className="text-sm text-muted-foreground font-body">
+              &copy; {new Date().getFullYear()} Campion Media Limited. All rights reserved.
+            </p>
+            <div className="flex items-center gap-6">
+              <a href="/privacy-policy" className="text-sm text-muted-foreground hover:text-primary transition-colors font-body">
+                Privacy Policy
+              </a>
+              <a href="/terms-of-service" className="text-sm text-muted-foreground hover:text-primary transition-colors font-body">
+                Terms of Service
+              </a>
+            </div>
           </div>
+          <p className="text-xs text-muted-foreground/70 font-body text-center">
+            Campion Media Limited is a company registered in England and Wales (Company No. 10875806). Registered office: 7 Bell Yard, London, England, WC2A 2JR.
+          </p>
         </div>
       </div>
     </footer>
