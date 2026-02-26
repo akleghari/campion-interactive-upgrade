@@ -16,11 +16,28 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { href: '#home', label: 'Home' },
-    { href: '#about', label: 'About' },
-    { href: '#services', label: 'Services' },
-    { href: '#contact', label: 'Contact' },
+    { href: '/#home', label: 'Home' },
+    { href: '/#about', label: 'About' },
+    { href: '/#services', label: 'Services' },
+    { href: '/#contact', label: 'Contact' },
   ];
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    const hash = href.replace('/', '');
+    if (window.location.pathname === '/') {
+      e.preventDefault();
+      const el = document.getElementById(hash.replace('#', ''));
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleGetInTouch = () => {
+    if (window.location.pathname === '/') {
+      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.location.href = '/#contact';
+    }
+  };
 
   return (
     <nav
@@ -32,7 +49,7 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <a href="#home" className="flex items-center gap-3 group">
+        <a href="/" className="flex items-center gap-3 group">
           <img 
             src={campionLogo} 
             alt="Campion Media" 
@@ -46,13 +63,14 @@ const Navbar = () => {
             <a
               key={link.href}
               href={link.href}
+              onClick={(e) => handleNavClick(e, link.href)}
               className="text-muted-foreground hover:text-foreground transition-colors duration-300 relative group font-body"
             >
               {link.label}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
             </a>
           ))}
-          <Button variant="hero" size="lg" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+          <Button variant="hero" size="lg" onClick={handleGetInTouch}>
             Get in Touch
           </Button>
         </div>
@@ -77,13 +95,13 @@ const Navbar = () => {
             <a
               key={link.href}
               href={link.href}
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={(e) => { setIsMobileMenuOpen(false); handleNavClick(e, link.href); }}
               className="text-foreground hover:text-primary transition-colors py-2 font-body"
             >
               {link.label}
             </a>
           ))}
-          <Button variant="hero" size="lg" className="mt-2" onClick={() => { setIsMobileMenuOpen(false); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }}>
+          <Button variant="hero" size="lg" className="mt-2" onClick={() => { setIsMobileMenuOpen(false); handleGetInTouch(); }}>
             Get in Touch
           </Button>
         </div>
