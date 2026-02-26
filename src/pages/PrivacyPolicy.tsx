@@ -105,7 +105,14 @@ const PrivacyPolicy = () => {
                   <li><strong className="text-foreground">Third-Party / Functional cookies:</strong> Set by embedded services such as hosting provider scripts. Provider: Cloudflare, GitHub Pages.</li>
                 </ul>
                 <p className="mt-4">
-                  You can manage or withdraw cookie consent at any time via the cookie banner or your browser settings. For more information on Google Analytics cookies, visit:{' '}
+                  You can manage or withdraw cookie consent at any time via the{' '}
+                  <button
+                    onClick={resetCookieConsent}
+                    className="text-primary hover:underline cursor-pointer bg-transparent border-none p-0 font-body text-sm inline"
+                  >
+                    cookie consent banner
+                  </button>{' '}
+                  or your browser settings. For more information on Google Analytics cookies, visit:{' '}
                   <a href="https://policies.google.com/technologies/cookies" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
                     https://policies.google.com/technologies/cookies
                   </a>
