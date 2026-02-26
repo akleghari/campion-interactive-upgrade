@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { resetCookieConsent } from '@/components/CookieBanner';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
