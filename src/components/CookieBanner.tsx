@@ -2,21 +2,69 @@ import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Cookie } from 'lucide-react';
 
+interface CookieConsent {
+  status: 'accepted' | 'declined';
+  timestamp: string;
+  version: '1.0';
+}
+
+const CONSENT_KEY = 'cookie-consent';
+const CONSENT_EXPIRY_DAYS = 365;
+
+const getConsent = (): CookieConsent | null => {
+  try {
+    const raw = localStorage.getItem(CONSENT_KEY);
+    if (!raw) return null;
+    const consent: CookieConsent = JSON.parse(raw);
+    // Check expiry (12 months)
+    const consentDate = new Date(consent.timestamp);
+    const now = new Date();
+    const diffDays = (now.getTime() - consentDate.getTime()) / (1000 * 60 * 60 * 24);
+    if (diffDays > CONSENT_EXPIRY_DAYS) {
+      localStorage.removeItem(CONSENT_KEY);
+      return null;
+    }
+    return consent;
+  } catch {
+    localStorage.removeItem(CONSENT_KEY);
+    return null;
+  }
+};
+
+const setConsent = (status: 'accepted' | 'declined') => {
+  const consent: CookieConsent = {
+    status,
+    timestamp: new Date().toISOString(),
+    version: '1.0',
+  };
+  localStorage.setItem(CONSENT_KEY, JSON.stringify(consent));
+};
+
+/** Expose a global function so users can re-open the banner from the privacy policy */
+export const resetCookieConsent = () => {
+  localStorage.removeItem(CONSENT_KEY);
+  window.dispatchEvent(new Event('cookie-consent-reset'));
+};
+
 const CookieBanner = () => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const consent = localStorage.getItem('cookie-consent');
+    const consent = getConsent();
     if (!consent) setVisible(true);
+
+    const handleReset = () => setVisible(true);
+    window.addEventListener('cookie-consent-reset', handleReset);
+    return () => window.removeEventListener('cookie-consent-reset', handleReset);
   }, []);
 
   const accept = () => {
-    localStorage.setItem('cookie-consent', 'accepted');
+    setConsent('accepted');
     setVisible(false);
   };
 
   const decline = () => {
-    localStorage.setItem('cookie-consent', 'declined');
+    setConsent('declined');
     setVisible(false);
   };
 
