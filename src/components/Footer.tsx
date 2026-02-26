@@ -3,7 +3,11 @@ import campionLogo from '@/assets/campion-logo.png';
 
 const Footer = () => {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (window.location.pathname === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      window.location.href = '/';
+    }
   };
 
   return (
@@ -21,16 +25,16 @@ const Footer = () => {
 
           {/* Links */}
           <div className="flex items-center gap-8">
-            <a href="#home" className="text-muted-foreground hover:text-primary transition-colors font-body text-sm">
+            <a href="/#home" className="text-muted-foreground hover:text-primary transition-colors font-body text-sm">
               Home
             </a>
-            <a href="#about" className="text-muted-foreground hover:text-primary transition-colors font-body text-sm">
+            <a href="/#about" className="text-muted-foreground hover:text-primary transition-colors font-body text-sm">
               About
             </a>
-            <a href="#services" className="text-muted-foreground hover:text-primary transition-colors font-body text-sm">
+            <a href="/#services" className="text-muted-foreground hover:text-primary transition-colors font-body text-sm">
               Services
             </a>
-            <a href="#contact" className="text-muted-foreground hover:text-primary transition-colors font-body text-sm">
+            <a href="/#contact" className="text-muted-foreground hover:text-primary transition-colors font-body text-sm">
               Contact
             </a>
           </div>
