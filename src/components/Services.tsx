@@ -4,6 +4,7 @@ import {
   Truck, 
   Warehouse, 
   Scale, 
+  BookOpen,
   ArrowRight,
   Sparkles 
 } from 'lucide-react';
