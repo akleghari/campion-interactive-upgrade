@@ -4,6 +4,7 @@ import {
   Truck, 
   Warehouse, 
   Scale, 
+  BookOpen,
   ArrowRight,
   Sparkles 
 } from 'lucide-react';
@@ -57,6 +58,13 @@ const Services = () => {
       description:
         'Navigate complex regulatory frameworks with expert guidance on compliance and best practices.',
       features: ['Compliance Audit', 'Documentation', 'Risk Management'],
+    },
+    {
+      icon: <BookOpen className="w-8 h-8" />,
+      title: 'Book Publishing & Marketing',
+      description:
+        'End-to-end book publishing support, distribution strategy, and targeted marketing campaigns for authors and publishers.',
+      features: ['Publishing Strategy', 'Distribution Channels', 'Marketing Campaigns'],
     },
   ];
 
