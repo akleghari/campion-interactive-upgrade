@@ -12,7 +12,7 @@ const goContact = () => {
 const features = [
   { icon: Clock, title: 'UK-based, UK hours', text: 'Real replies in your working day, not overnight.' },
   { icon: PoundSterling, title: 'Fixed monthly price', text: 'No hourly billing. No arguments about what counts as extra.' },
-  { icon: Store, title: 'Store owners ourselves', text: 'We run live Shopify stores for UK and Pakistan customers.' },
+  { icon: Store, title: 'Store owners ourselves', text: 'We run live Shopify stores for UK and US customers.' },
 ];
 
 const plans = [
