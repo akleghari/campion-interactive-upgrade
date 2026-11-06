@@ -5,6 +5,7 @@ import {
   Warehouse, 
   Scale, 
   BookOpen,
+  Store,
   ArrowRight,
   Sparkles 
 } from 'lucide-react';
@@ -66,6 +67,14 @@ const Services = () => {
         'End-to-end book publishing support, distribution strategy, and targeted marketing campaigns for authors and publishers.',
       features: ['Publishing Strategy', 'Distribution Channels', 'Marketing Campaigns'],
     },
+    {
+      icon: <Store className="w-8 h-8" />,
+      title: 'Shopify Store Care',
+      description:
+        'Ongoing care for your Shopify store: updates, health checks and small changes each month, at a fixed price.',
+      features: ['Store Health Checks', 'Monthly Changes', 'Product Updates'],
+      href: '/store-care',
+    },
   ];
 
   return (
@@ -121,6 +130,7 @@ const ServiceCard = ({
   features,
   index,
   isVisible,
+  href = '#contact',
 }: {
   icon: React.ReactNode;
   title: string;
@@ -128,6 +138,7 @@ const ServiceCard = ({
   features: string[];
   index: number;
   isVisible: boolean;
+  href?: string;
 }) => (
   <div
     className="group relative glass-card p-6 hover:bg-secondary/40 transition-all duration-500 hover:-translate-y-2"
@@ -167,7 +178,7 @@ const ServiceCard = ({
 
     {/* Link */}
     <a
-      href="#contact"
+      href={href}
       className="inline-flex items-center gap-2 text-primary font-medium text-sm group/link font-body"
     >
       Learn More
