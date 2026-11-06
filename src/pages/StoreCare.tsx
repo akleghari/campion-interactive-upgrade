@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import { Clock, PoundSterling, Store, Check } from 'lucide-react';
+import { Clock, PoundSterling, Store, Check, ShoppingBag } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -51,6 +51,38 @@ const faqs = [
   { q: 'Do you build new stores?', a: 'Our focus is looking after existing stores. For new builds, ask about our eCommerce Strategy service.' },
 ];
 
+const checks = ['Checkout working', 'Apps up to date', 'Theme updated', 'Broken links: 0', 'Last health check: today'];
+
+const StoreDashboard = () => (
+  <div className="relative mx-auto w-full max-w-md" aria-hidden="true">
+    <div className="absolute -inset-6 rounded-[2rem] blur-3xl opacity-60 pulse-glow" style={{ backgroundImage: 'var(--gradient-growth)' }} />
+    <div className="relative glass-card p-6 rounded-2xl floating">
+      <div className="flex items-center justify-between mb-5">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl btn-growth flex items-center justify-center text-primary-foreground">
+            <ShoppingBag className="w-5 h-5" />
+          </div>
+          <div>
+            <div className="font-heading font-semibold text-foreground">Your Store</div>
+            <div className="text-xs text-muted-foreground font-body">Store health</div>
+          </div>
+        </div>
+        <span className="px-2.5 py-1 rounded-full bg-primary/15 text-primary text-xs font-semibold font-body">All good</span>
+      </div>
+      <ul className="space-y-2.5">
+        {checks.map((c) => (
+          <li key={c} className="flex items-center justify-between px-4 py-3 rounded-xl bg-secondary/40 border border-border/40">
+            <span className="text-sm text-foreground/90 font-body">{c}</span>
+            <span className="w-6 h-6 rounded-full bg-[hsl(var(--success))]/20 text-[hsl(var(--success))] flex items-center justify-center">
+              <Check className="w-4 h-4" />
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+);
+
 const SectionHeading = ({ label, title }: { label: string; title: string }) => (
   <div className="text-center max-w-3xl mx-auto mb-12">
     <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6 font-body">{label}</span>
@@ -70,22 +102,28 @@ const StoreCare = () => (
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="relative pt-40 pb-24 overflow-hidden">
+        <section className="relative pt-36 pb-20 overflow-hidden">
           <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-primary/10 rounded-full blur-[150px]" />
-          <div className="container mx-auto px-6 relative z-10 max-w-4xl text-center">
-            <h1 className="font-heading text-4xl md:text-6xl font-bold text-foreground mb-6">
-              Shopify <span className="text-gradient">Store Care</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-foreground/90 font-body mb-6">Your store, looked after. So you can run the business.</p>
-            <p className="text-lg text-muted-foreground font-body leading-relaxed mb-10">
-              You don't need a new website. You need someone to look after the one you have. We keep your Shopify store updated, tidy and selling, and we make the small changes you need without the long waits or surprise invoices. We run our own Shopify stores, so we know what matters: a checkout that works, products that are up to date, and pages that load fast.
-            </p>
-            <Button variant="hero" size="lg" onClick={goContact}>Get a free store check</Button>
+          <div className="container mx-auto px-6 relative z-10 max-w-6xl grid lg:grid-cols-2 gap-14 items-center">
+            <div className="text-center lg:text-left">
+              <h1 className="font-heading text-4xl md:text-6xl font-bold text-foreground mb-6">
+                Shopify <span className="text-gradient">Store Care</span>
+              </h1>
+              <p className="text-xl md:text-2xl text-foreground/90 font-body mb-6">Your store, looked after. So you can run the business.</p>
+              <p className="text-lg text-muted-foreground font-body leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0">
+                We keep your Shopify store updated, tidy and selling. Fixed monthly price, no surprise invoices.
+              </p>
+              <Button variant="hero" size="lg" onClick={goContact}>Get a free store check</Button>
+            </div>
+            <StoreDashboard />
           </div>
         </section>
 
         {/* Features */}
         <section className="pb-24">
+          <p className="container mx-auto px-6 max-w-2xl text-center text-muted-foreground font-body mb-10">
+            We run our own Shopify stores, so we know what matters: a checkout that works, products that are up to date, and pages that load fast.
+          </p>
           <div className="container mx-auto px-6 grid md:grid-cols-3 gap-6 max-w-6xl">
             {features.map(({ icon: Icon, title, text }) => (
               <div key={title} className="glass-card p-6 hover:-translate-y-1 transition-transform duration-300">
@@ -106,7 +144,7 @@ const StoreCare = () => (
             <SectionHeading label="Plans" title="Choose the care your store needs" />
             <div className="grid md:grid-cols-3 gap-6">
               {plans.map((p) => (
-                <div key={p.name} className={`glass-card p-8 flex flex-col relative ${p.badge ? 'border-primary/60 ring-1 ring-primary/40' : ''}`}>
+                <div key={p.name} className={`p-8 flex flex-col relative rounded-2xl ${p.badge ? 'growth-card md:scale-105 z-10' : 'glass-card'}`}>
                   {p.badge && (
                     <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-primary text-primary-foreground text-xs font-semibold font-body">{p.badge}</span>
                   )}
@@ -119,7 +157,7 @@ const StoreCare = () => (
                       </li>
                     ))}
                   </ul>
-                  <Button variant={p.badge ? 'hero' : 'outline'} size="lg" className="w-full" onClick={goContact}>Get a quote</Button>
+                  <Button variant={p.badge ? 'default' : 'outline'} size="lg" className={`w-full ${p.badge ? 'btn-growth text-primary-foreground font-semibold hover:opacity-90' : ''}`} onClick={goContact}>Get a quote</Button>
                 </div>
               ))}
             </div>
