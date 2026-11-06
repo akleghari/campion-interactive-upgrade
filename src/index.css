@@ -41,6 +41,8 @@
     --gradient-accent: linear-gradient(135deg, hsl(320, 40%, 55%) 0%, hsl(340, 50%, 60%) 100%);
     --gradient-hero: linear-gradient(180deg, hsl(260, 40%, 6%) 0%, hsl(260, 35%, 10%) 100%);
     --gradient-card: linear-gradient(135deg, hsl(260, 35%, 12%) 0%, hsl(260, 35%, 8%) 100%);
+    --success: 145 65% 50%;
+    --gradient-growth: linear-gradient(135deg, hsl(280, 60%, 62%) 0%, hsl(220, 85%, 60%) 100%);
     --gradient-glow: radial-gradient(ellipse at center, hsl(280, 35%, 58%, 0.15) 0%, transparent 70%);
     
     --shadow-glow: 0 0 60px hsl(280, 35%, 58%, 0.25);
@@ -140,6 +142,20 @@
       linear-gradient(hsl(222, 30%, 15%, 0.5) 1px, transparent 1px),
       linear-gradient(90deg, hsl(222, 30%, 15%, 0.5) 1px, transparent 1px);
     background-size: 60px 60px;
+  }
+
+  .growth-card {
+    position: relative;
+    border: 2px solid transparent;
+    background:
+      linear-gradient(hsl(var(--background)), hsl(var(--background))) padding-box,
+      var(--gradient-growth) border-box;
+    box-shadow: 0 0 40px hsl(270, 60%, 60%, 0.35), 0 0 80px hsl(220, 80%, 60%, 0.2);
+  }
+
+  .btn-growth {
+    background-image: var(--gradient-growth);
+    box-shadow: 0 6px 24px hsl(250, 70%, 60%, 0.45);
   }
 
   .floating {
