@@ -146,7 +146,7 @@
 
   .growth-card {
     position: relative;
-    border: 1px solid transparent;
+    border: 2px solid transparent;
     background:
       linear-gradient(hsl(var(--background)), hsl(var(--background))) padding-box,
       var(--gradient-growth) border-box;

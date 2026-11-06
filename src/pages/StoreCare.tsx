@@ -102,7 +102,7 @@ const StoreCare = () => (
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="relative pt-36 pb-20 overflow-hidden">
+        <section className="relative pt-36 pb-20 overflow-x-clip">
           <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-primary/10 rounded-full blur-[150px]" />
           <div className="container mx-auto px-6 relative z-10 max-w-6xl grid lg:grid-cols-2 gap-14 items-center">
             <div className="text-center lg:text-left">
