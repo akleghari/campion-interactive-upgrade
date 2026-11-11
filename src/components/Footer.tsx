@@ -11,7 +11,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative py-16 border-t border-border/50">
+    <footer className="relative pt-16 border-t border-border/50" style={{ paddingBottom: 'calc(4rem + var(--cookie-banner-height, 0px))' }}>
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Logo */}

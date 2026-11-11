@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Cookie } from 'lucide-react';
 
@@ -48,6 +48,28 @@ export const resetCookieConsent = () => {
 
 const CookieBanner = () => {
   const [visible, setVisible] = useState(false);
+  const bannerRef = useRef<HTMLDivElement>(null);
+
+  // Reserve space at the bottom of the page so footer links stay clickable.
+  useEffect(() => {
+    const root = document.documentElement;
+    if (!visible) {
+      root.style.setProperty('--cookie-banner-height', '0px');
+      return;
+    }
+    const el = bannerRef.current;
+    if (!el) return;
+    const sync = () => root.style.setProperty('--cookie-banner-height', `${el.offsetHeight}px`);
+    sync();
+    const observer = new ResizeObserver(sync);
+    observer.observe(el);
+    window.addEventListener('resize', sync);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', sync);
+      root.style.setProperty('--cookie-banner-height', '0px');
+    };
+  }, [visible]);
 
   useEffect(() => {
     const consent = getConsent();
@@ -71,7 +93,7 @@ const CookieBanner = () => {
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 p-4 animate-in slide-in-from-bottom duration-500">
+    <div ref={bannerRef} className="fixed bottom-0 left-0 right-0 z-50 p-4 animate-in slide-in-from-bottom duration-500">
       <div className="container mx-auto max-w-4xl">
         <div className="bg-card border border-border rounded-xl p-6 shadow-2xl flex flex-col sm:flex-row items-start sm:items-center gap-4">
           <Cookie className="w-6 h-6 text-primary shrink-0 mt-0.5 sm:mt-0" />
