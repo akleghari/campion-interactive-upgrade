@@ -84,7 +84,7 @@ const StoreDashboard = () => (
 );
 
 const SectionHeading = ({ label, title }: { label: string; title: string }) => (
-  <div className="text-center max-w-3xl mx-auto mb-12">
+  <div className="text-center max-w-3xl mx-auto mb-8">
     <span className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6 font-body">{label}</span>
     <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground">{title}</h2>
   </div>
@@ -102,7 +102,7 @@ const StoreCare = () => (
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="relative pt-36 pb-20 overflow-x-clip">
+        <section className="relative pt-32 pb-10 overflow-x-clip">
           <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-primary/10 rounded-full blur-[150px]" />
           <div className="container mx-auto px-6 relative z-10 max-w-6xl grid lg:grid-cols-2 gap-14 items-center">
             <div className="text-center lg:text-left">
@@ -120,7 +120,7 @@ const StoreCare = () => (
         </section>
 
         {/* Features */}
-        <section className="pb-24">
+        <section className="pb-12">
           <p className="container mx-auto px-6 max-w-2xl text-center text-muted-foreground font-body mb-10">
             We run our own Shopify stores, so we know what matters: a checkout that works, products that are up to date, and pages that load fast.
           </p>
@@ -138,7 +138,7 @@ const StoreCare = () => (
         </section>
 
         {/* Plans */}
-        <section className="relative py-24 bg-secondary/20">
+        <section className="relative py-12 bg-secondary/20">
           <div className="absolute inset-0 grid-pattern opacity-20" />
           <div className="container mx-auto px-6 relative z-10 max-w-6xl">
             <SectionHeading label="Plans" title="Choose the care your store needs" />
@@ -168,23 +168,42 @@ const StoreCare = () => (
         </section>
 
         {/* How it works */}
-        <section className="py-24">
+        <section className="py-12">
           <div className="container mx-auto px-6 max-w-6xl">
             <SectionHeading label="How It Works" title="Four simple steps" />
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {steps.map((s, i) => (
-                <div key={s.title} className="glass-card p-6">
-                  <div className="w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-heading text-xl font-bold mb-5">{i + 1}</div>
-                  <h3 className="font-heading text-lg font-semibold text-foreground mb-2">{s.title}</h3>
-                  <p className="text-muted-foreground font-body text-sm">{s.text}</p>
-                </div>
-              ))}
+            <div className="relative">
+              {/* Desktop: line running through the numbered circles */}
+              <div
+                className="hidden lg:block absolute top-6 left-[11.3%] right-[11.3%] h-[2px] rounded-full opacity-70"
+                style={{ backgroundImage: 'var(--gradient-growth)' }}
+                aria-hidden="true"
+              />
+              <div className="grid lg:grid-cols-4 gap-0 lg:gap-8">
+                {steps.map((s, i) => (
+                  <div key={s.title} className="relative flex gap-5 lg:flex-col lg:items-center lg:gap-0 pb-8 last:pb-0 lg:pb-0">
+                    {i < steps.length - 1 && (
+                      <span
+                        className="lg:hidden absolute left-6 top-12 bottom-0 w-[2px] -translate-x-1/2 rounded-full opacity-70"
+                        style={{ backgroundImage: 'var(--gradient-growth)' }}
+                        aria-hidden="true"
+                      />
+                    )}
+                    <div className="relative z-10 shrink-0 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-heading text-xl font-bold lg:mb-5">
+                      {i + 1}
+                    </div>
+                    <div className="lg:text-center">
+                      <h3 className="font-heading text-lg font-semibold text-foreground mb-2">{s.title}</h3>
+                      <p className="text-muted-foreground font-body text-sm">{s.text}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
         {/* FAQ */}
-        <section className="py-24 bg-secondary/20">
+        <section className="py-12 bg-secondary/20">
           <div className="container mx-auto px-6 max-w-3xl">
             <SectionHeading label="FAQ" title="Common questions" />
             <Accordion type="single" collapsible className="glass-card px-6">
